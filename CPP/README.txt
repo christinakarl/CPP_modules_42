@@ -46,4 +46,17 @@ classes
 Other notes:
 - include guards: telling compiler to compile a header file only once in case it's called
 multiple times >> ifndef-define-endif
--
+-"this" can be used to instantiate a member of a class in the code of a member function (p.e.
+constructor or any other member function) because C++ always sends itself as an invisible
+first parameter to each member function
+- "const" serves to 'block' a member function of a class (making it read only), meaning "this"
+cannot be used in this member to change the current instance
+- struct is public by default vs class is private by default
+- Accessors (allow to have control over user input and output to user):
+	- int _value is private
+	- getValue (void) const is public: read _value
+	- setValue (void) is public: function to change _value only if greater than 0
+- static keyword in C++ = instatiate a variable at a class level (not only an instance level)
+	- non member function: "static" >> "this" cannot be used but the "classname::" needs to be used
+	- non member attribute (static variable): needs to be initialized outside of a function
+		p.e. int	Sample::_nbVal = 0;
