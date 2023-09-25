@@ -6,7 +6,7 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/20 13:51:36 by ckarl             #+#    #+#              #
-#    Updated: 2023/09/21 14:39:19 by ckarl            ###   ########.fr        #
+#    Updated: 2023/09/25 12:05:12 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,10 @@ CFLAGS		= -Wall -Wextra -Werror -std=c++98
 NAME		= phonebook
 OBJS_DIR	= objs
 SRCS_DIR	= .
-SRCS		= megaphone.cpp
+SRCS		= main.cpp			\
+			ClassPhonebook.cpp	\
+			ClassContact.cpp	\
+
 OBJS		= $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
 	### COLORS ###
@@ -29,16 +32,15 @@ WHITE		= \033[1;37m
 RESET		= \033[0m
 
 all: $(OBJS_DIR) $(NAME)
-	@echo "$(VIOLET)Successfully compiled $(NAME) 💥$(RESET)"
-
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 $(OBJS_DIR):
 	mkdir -p $(OBJS_DIR)
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(FLAGS) -c $< -o $@
+
+$(NAME): $(OBJS)
+	$(CC) $(FLAGS) $(OBJS) -o $(NAME)
 
 clean:
 	/bin/rm -rf $(OBJS_DIR)
