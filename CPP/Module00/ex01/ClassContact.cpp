@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:40:08 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/15 23:18:43 by ckarl            ###   ########.fr       */
+/*   Updated: 2023/11/23 12:17:48 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	Contact::display_ctc_short( void )
 {
 
 	std::cout << std::setw(10) << this->index << "|";
-
 	if (this->_0FirstName.size() > 9)
 		std::cout << std::setw(10) << this->_0FirstName.substr(0,9) + "." << "|";
 	else
@@ -80,10 +79,10 @@ void	Contact::display_ctc_short( void )
 
 void	Contact::display_ctc_long( void )				//this doesn't work yet
 {
-	std::cout << this->_0FirstName << std::endl;
-	std::cout << "\033[2;35mFirst name: " + this->_0FirstName << std::endl;
-	std::cout << "Last name: " + this->_1LastName << std::endl;
-	std::cout << "Nickname: " + this->_2NickName << std::endl;
-	std::cout << "Phone number: " + this->_3PhoneNumber << std::endl;
-	std::cout << "Darkest secret: " + this->_4DarkestSecret + "\033[0m\n\n";
+	// std::cout << "in the display long func" << std::endl;
+	std::cout << "\033[2;35mFirst name: " << this->_0FirstName << std::endl;
+	std::cout << "Last name: " << this->_1LastName << std::endl;
+	std::cout << "Nickname: " << this->_2NickName << std::endl;
+	std::cout << "Phone number: " << this->_3PhoneNumber << std::endl;
+	std::cout << "Darkest secret: " << this->_4DarkestSecret + "\033[0m\n\n";
 }

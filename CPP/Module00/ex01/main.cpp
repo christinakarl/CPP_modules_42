@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:38:34 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/15 23:15:57 by ckarl            ###   ########.fr       */
+/*   Updated: 2023/11/23 12:07:35 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main( void )
 		}
 		if (prompt.compare("EXIT") == 0)
 		{
-			std::cout << "\033[1;31m\nDestroying your phonebook\033[0m\n\n";
+			std::cout << "\033[1;31m\nYour phonebook is being destroyed\033[0m\n\n";
 			return 0;
 		}
 	}

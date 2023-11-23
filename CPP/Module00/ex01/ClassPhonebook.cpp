@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:42:09 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/15 23:15:32 by ckarl            ###   ########.fr       */
+/*   Updated: 2023/11/23 12:26:27 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	Phonebook::getctc_info( int ctc_index )
 	if (ctc_index < 0 || ctc_index > 7)
 		return ;
 	else if (this->index > ctc_index)
-		this->_Book[index].display_ctc_long();
+		this->_Book[ctc_index].display_ctc_long();
 	else
 		std::cout << "\n\033[1;35mThis index does not exist yet\033[0m\n\n";
 }
