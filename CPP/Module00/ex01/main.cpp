@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 19:38:34 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/23 12:07:35 by ckarl            ###   ########.fr       */
+/*   Updated: 2023/11/23 14:46:19 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,25 @@ int	main( void )
 				{
 					std::cout << "\n\033[1;35mChoose a contact by indicating an index from 0 to 7\033[0m\n";
 					std::getline(std::cin, prompt);
-					nbr = std::stoi(prompt);
+					try
+					{
+						nbr = std::stoi(prompt);
+					}
+					catch (std::invalid_argument const& ex)
+					{
+						nbr = -1;
+					}
+					catch (std::out_of_range const& ex)
+					{
+						nbr = -1;
+					}
 					if (nbr < 0 || nbr > 7 || prompt.empty())
-						std::cout << "\033[1;35mThis index is out of range\033[0m\n";
+						std::cout << "\n\033[0;35mThis index is out of range or invalid\033[0m\n";
 					else
 					{
-						book.getctc_info(nbr);
-						break ;
+						if (book.getctc_info(nbr) == 0)
+							break ;
+
 					}
 				}
 			}
