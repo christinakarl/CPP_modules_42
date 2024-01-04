@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:42:57 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/04 18:40:21 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/04 18:51:32 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 HumanA::HumanA( std::string newname, Weapon &newWeapon ) : _weapon(newWeapon), _name(newname)
 {
-	std::cout << "HumanA has been created with name: " +this->_name + " and weapon " << this->_weapon.getType() << std::endl;
+	std::cout << "HumanA has been created with the name: " +this->_name + " and weapon: " << this->_weapon.getType() << std::endl;
 	return ;
 }
 

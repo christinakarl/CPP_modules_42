@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:30:20 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/04 18:39:38 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/04 18:55:10 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ public:
 	~HumanB( void );
 
 	void	attack( void );
-	void	setWeapon( Weapon &newWeapon);
+	void	setWeapon( Weapon newWeapon);
 
 private:
 	std::string	_name;
