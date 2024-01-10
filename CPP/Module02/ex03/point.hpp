@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:50 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/10 17:17:13 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/10 17:26:58 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	Point( void );
 	Point( const float x, const float y );
 	Point( const Point &p );
-	Point &operator = ( const Point &p );
+	Point	&operator = ( const Point &p );
 	~Point( void );
 
 private:

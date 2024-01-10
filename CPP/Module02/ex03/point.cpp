@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:42 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/10 17:25:39 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/10 17:28:16 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,17 @@ Point::~Point( void )
 	std::cout << "'Point' class destructor called" << std::endl;
 }
 
-Point::Point( const Point &p ) : _x(p._x), _y(p._x)
+Point::Point( const Point &p ) : _x(p._x), _y(p._x)								//why need to initialise here?
 {
 	std::cout << "'Point' class copy constructor called" << std::endl;
 	if (this != &p)
 	{
-		*this = p;
+		this->_x = p._x;
+		this->_y = p._y;
 	}
 }
 
-Point &Point::operator = ( const Point &p )
+Point	&Point::operator = ( const Point &p )
 {
 	std::cout << "'Point' class copy assignment operator called" << std::endl;
 	if (this != &p)
