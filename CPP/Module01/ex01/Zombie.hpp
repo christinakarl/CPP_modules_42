@@ -6,9 +6,12 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:15:25 by ckarl             #+#    #+#             */
-/*   Updated: 2023/12/13 15:57:04 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/09 13:04:44 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -28,6 +31,6 @@ private:
 	std::string	_name;
 };
 
-Zombie	*newZombie( std::string name );
 Zombie	*zombieHorde( int N, std::string name );
-void	freeZombielist( Zombie *zombielist );
+
+#endif

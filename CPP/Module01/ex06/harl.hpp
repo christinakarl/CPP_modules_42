@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:15:45 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/08 21:09:10 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/09 13:11:07 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ public:
 	Harl( void );
 	~Harl( void );
 
-	void	complainForever( std::string level );
+	void	complainForever( const std::string level );
 
 private:
 	void	debug( void );

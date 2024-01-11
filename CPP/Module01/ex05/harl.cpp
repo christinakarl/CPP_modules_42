@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 17:15:27 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/09 13:11:27 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/09 13:10:30 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,34 +42,13 @@ void	Harl::error( void )
 	std::cout << "\033[1;34mThis is unacceptable! I want to speak to the manager now.💣\033[0m" << std::endl;
 }
 
-void	Harl::complainForever( const std::string level )
+void	Harl::complain( const std::string level )
 {
 	std::string	msg[4] = {"debug", "info", "warning", "error"};
 	void (Harl::*func_ptr[4])( void ) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	int	i = -1;
-
-	while (++i < 4)
+	for (int i = 0; i < 4; i++)
 	{
 		if (level == msg[i])
-			break ;
-	}
-	switch(i)
-	{
-		case 0:
-			std::cout << "[ debug ]" << std::endl;
-			(this->*func_ptr[0])();
-		case 1:
-			std::cout << "[ info ]" << std::endl;
-			(this->*func_ptr[1])();
-		case 2:
-			std::cout << "[ warning ]" << std::endl;
-			(this->*func_ptr[2])();
-		case 3:
-			std::cout << "[ error ]" << std::endl;
-			(this->*func_ptr[3])();
-			break ;
-		default:
-			std::cout << "\033[0;34mHarl just loves complaining about anything and anyone\033[0m" << std::endl;
+			(this->*func_ptr[i])();
 	}
 }
-

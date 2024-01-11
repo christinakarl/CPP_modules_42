@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:33:53 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/23 16:42:57 by ckarl            ###   ########.fr       */
+/*   Updated: 2023/12/13 15:51:35 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 
 Zombie	*newZombie( std::string name )
 {
-	Zombie *newZ;
+	Zombie *newZ = new Zombie;
 
-	newZ = (Zombie *)std::malloc(sizeof(Zombie));
-	if (!newZ)
-		return NULL;
 	newZ->setName( name );
 	return (newZ);
 }

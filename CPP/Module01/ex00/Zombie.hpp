@@ -6,9 +6,12 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 16:15:25 by ckarl             #+#    #+#             */
-/*   Updated: 2023/11/23 16:46:46 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/09 13:03:18 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 
 #include <iostream>
 #include <iomanip>
@@ -29,3 +32,5 @@ private:
 
 void	randomChump( std::string name );
 Zombie	*newZombie( std::string name );
+
+#endif

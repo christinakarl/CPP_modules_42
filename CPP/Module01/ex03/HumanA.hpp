@@ -6,16 +6,16 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 15:41:47 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/04 18:39:59 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/09 13:08:54 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef HUMANA_HPP
+#define HUMANA_HPP
 
 #include <iostream>
 #include <iomanip>
 #include "Weapon.hpp"
-
-#ifndef HUMANA_HPP
-#define HUMANA_HPP
 
 class HumanA{
 

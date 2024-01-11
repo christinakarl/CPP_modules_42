@@ -5,33 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/13 15:34:41 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/08 13:11:11 by ckarl            ###   ########.fr       */
+/*   Created: 2023/11/23 15:27:23 by ckarl             #+#    #+#             */
+/*   Updated: 2023/12/13 15:52:59 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "Zombie.hpp"
+#include <stdlib.h>
+#include <iostream>
+#include <iomanip>
 
 int	main( void )
 {
+	Zombie	*myZombie;
 
-{
-	Weapon club = Weapon("crude spiked club");
-	HumanA bob("bob", club);
-	bob.attack();
-	club.setType("some other type of club");
-	bob.attack();
-}
-{
-	Weapon club = Weapon("crude spiked club");
+	myZombie = newZombie("helmut");
+	myZombie->announce();
 
-	HumanB jim("jim");
-	// jim.attack();
-	jim.setWeapon(club);
-	jim.attack();
-	club.setType("some other type of club");
-	jim.attack();
-}
+	randomChump("");
+	delete myZombie;
 	return 0;
 }
