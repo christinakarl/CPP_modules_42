@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 17:04:50 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/10 17:26:58 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/11 14:28:16 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <string>
 #include <cmath>
+#include "fixed.hpp"
 
 class Point {
 public:
@@ -25,9 +26,14 @@ public:
 	Point	&operator = ( const Point &p );
 	~Point( void );
 
+	float	getX( void ) const;
+	float	getY( void ) const;
+
 private:
-	const float	_x;
-	const float	_y;
+	Fixed const	_x;
+	Fixed const	_y;
 };
+
+bool bsp( Point const &a, Point const &b, Point const &c, Point const &point);
 
 #endif

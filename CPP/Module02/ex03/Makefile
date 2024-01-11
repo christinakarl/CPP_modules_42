@@ -6,7 +6,7 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/01/10 17:04:38 by ckarl            ###   ########.fr        #
+#    Updated: 2024/01/11 12:43:51 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRCS_DIR	= .
 SRCS		= main.cpp			\
 			fixed.cpp			\
 			point.cpp			\
+			bsp.cpp				\
 
 OBJS		= $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
