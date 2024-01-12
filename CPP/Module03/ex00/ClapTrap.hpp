@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:57:00 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/11 15:03:12 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/12 16:46:18 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,14 @@
 #include <iostream>
 #include <string>
 
+#define MSG 0
+#define INFO_MSG(msg) if (MSG) { std::cout << msg << std::endl; }
+
 class ClapTrap
 {
 public:
 	ClapTrap( void );
-	ClapTrap( std::string name)
+	ClapTrap( std::string name);
 	ClapTrap( const ClapTrap &c);
 	ClapTrap	&operator = (const ClapTrap &c);
 	~ClapTrap( void );
@@ -35,6 +38,6 @@ private:
 	int			_energyPoints;
 	int			_attackDamage;
 
-}
+};
 
 #endif
