@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:55:03 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/12 17:53:44 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:53:29 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,22 @@ int	main(void)
 {
 	ClapTrap	hulk("hulk");
 	ScavTrap	bambi("bambi");
+	ScavTrap	copy(bambi);
+	ScavTrap	copy2;
 
+	copy2 = copy;
 
+	std::cout << std::endl;
 	hulk.attack("bambi");
 	hulk.beRepaired(30);
 	hulk.takeDamage(10);
 	bambi.takeDamage(90);
 	bambi.attack("hulk");
+	copy.attack("original bambi");
 	bambi.beRepaired(2);
+	copy2.guardGate();
 	bambi.attack("hulk");
+	std::cout << std::endl;
+
 	return 0;
 }

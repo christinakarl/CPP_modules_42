@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:49:53 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/12 17:57:19 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:56:41 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 
 ScavTrap::ScavTrap( void ) : ClapTrap()
 {
-	std::cout << "'ScavTrap' default constructor called" << std::endl;
-	this->_name = "default";
+	std::cout << "'ScavTrap' class default constructor called" << std::endl;
 	this->_hitPoints = 100;
 	this->_attackDamage = 20;
 	this->_energyPoints = 50;
@@ -25,7 +24,6 @@ ScavTrap::ScavTrap( void ) : ClapTrap()
 ScavTrap::ScavTrap( std::string name ) : ClapTrap(name)
 {
 	std::cout << "'ScavTrap' class string constructor called" << std::endl;
-	this->_name = name;
 	this->_hitPoints = 100;
 	this->_attackDamage = 20;
 	this->_energyPoints = 50;
@@ -39,24 +37,31 @@ ScavTrap::~ScavTrap( void )
 
 ScavTrap::ScavTrap( const ScavTrap &s ) : ClapTrap(s)
 {
-	std::cout << "'ScavTrap' copy constructor called" << std::endl;
+	std::cout << "'ScavTrap' class copy constructor called" << std::endl;
+	if (this != &s)
+	{
+		this->_gate = s._gate;
+	}
 }
 
 ScavTrap &ScavTrap::operator=( const ScavTrap &s )
 {
 	std::cout << "'ScavTrap' copy assignment operator called" << std::endl;
-	this->_name = s._name;
-	this->_hitPoints = s._hitPoints;
-	this->_attackDamage = s._attackDamage;
-	this->_energyPoints = s._energyPoints;
-
+	if (this != &s)
+	{
+		this->_name = s._name;
+		this->_hitPoints = s._hitPoints;
+		this->_attackDamage = s._attackDamage;
+		this->_energyPoints = s._energyPoints;
+		this->_gate = s._gate;
+	}
 	return *this;
 }
 
 void	ScavTrap::guardGate( void )
 {
-	std::cout << "ScavTrap " + this->_name + " is now in GateKeeper mode" << std::endl;
 	this->_gate = 1;
+	std::cout << "ScavTrap " + this->_name + " is now in GateKeeper mode: " << this->_gate << std::endl;
 }
 
 

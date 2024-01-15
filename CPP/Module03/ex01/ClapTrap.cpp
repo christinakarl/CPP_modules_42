@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:55:52 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/12 17:56:30 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:45:01 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 ClapTrap::ClapTrap( void ) : _name("default"), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	INFO_MSG("'ClapTrap' class default constructor called");
+	std::cout << "'ClapTrap' class default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
-	INFO_MSG("'ClapTrap' class string constructor called");
+	std::cout << "'ClapTrap' class string constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap( const ClapTrap &c)
 {
-	INFO_MSG("'ClapTrap' class copy constructor called");
+	std::cout << "'ClapTrap' class copy constructor called" << std::endl;
 	if (this != &c)
 	{
 		this->_name = c._name;
@@ -36,7 +36,7 @@ ClapTrap::ClapTrap( const ClapTrap &c)
 
 ClapTrap	&ClapTrap::operator = (const ClapTrap &c)
 {
-	INFO_MSG("'ClapTrap' class copy assignment operator called");
+	std::cout << "'ClapTrap' class copy assignment operator called" << std::endl;
 	if (this != &c)
 	{
 		this->_name = c._name;
