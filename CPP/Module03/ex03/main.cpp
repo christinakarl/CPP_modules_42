@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:55:03 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/15 15:54:32 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 18:17:47 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,19 +23,13 @@
 int	main(void)
 {
 	DiamondTrap	shiny("Shiny");
-	// DiamondTrap	brillant;
-	// FragTrap	fragi;
-
-	// std::cout << std::endl;
-	// fragi.takeDamage(25);
-	// fragi.attack("else");
-	// fragi.beRepaired(5);
+	DiamondTrap	brillant;
 
 	std::cout << std::endl;
-	// shiny.attack("someone else");
+	shiny.attack("someone else");
 	shiny.whoAmI();
 	std::cout << std::endl;
-	// brillant.whoAmI();
+	brillant.whoAmI();
 	std::cout << std::endl;
 
 	return 0;
