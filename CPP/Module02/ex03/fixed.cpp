@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 17:42:38 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/11 13:04:04 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:58:33 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,19 @@
 Fixed::Fixed( void )
 {
 	this->_fixPointVal = 0;
-	INFO_MSG("'Fixed' class default constructor called");
-	// std::cout << "'Fixed' class default constructor called" << std::endl;
+	std::cout << "'Fixed' class default constructor called" << std::endl;
 }
 
 //destructor
 Fixed::~Fixed( void )
 {
-	INFO_MSG("'Fixed' class destructor called");
-	// std::cout << "'Fixed' class destructor called" << std::endl;
+	std::cout << "'Fixed' class destructor called" << std::endl;
 }
 
 //copy constructor
 Fixed::Fixed( const Fixed &f )
 {
-	// std::cout << "'Fixed' class copy constructor called" << std::endl;
-	INFO_MSG("'Fixed' class copy constructor called");
+	std::cout << "'Fixed' class copy constructor called" << std::endl;
 	if (this != &f)
 	{
 		this->_fixPointVal = f._fixPointVal;
@@ -45,8 +42,7 @@ Fixed &Fixed::operator = (const Fixed &f )
 	{
 		this->_fixPointVal = f._fixPointVal;
 	}
-	// std::cout << "'Fixed' class copy assignment operator called" << std::endl;
-	INFO_MSG("'Fixed' class copy assignment operator called");
+	std::cout << "'Fixed' class copy assignment operator called" << std::endl;
 	return *this ;
 }
 
@@ -54,8 +50,7 @@ Fixed &Fixed::operator = (const Fixed &f )
 Fixed::Fixed( const int a )
 {
 	this->_fixPointVal = a << this->_fractBits;
-	// std::cout << "'Fixed' class int constructor called" << std::endl;
-	INFO_MSG("'Fixed' class int constructor called");
+	std::cout << "'Fixed' class int constructor called" << std::endl;
 }
 
 /*constructor converting float to fixed point
@@ -66,8 +61,7 @@ fractional part is less than 0.5, the number will be rounded down.*/
 Fixed::Fixed( const float b )
 {
 	this->_fixPointVal = roundf((b * float(1U << this->_fractBits)));
-	INFO_MSG("'Fixed' class float constructor called");
-	// std::cout << "'Fixed' class float constructor called" << std::endl;
+	std::cout << "'Fixed' class float constructor called" << std::endl;
 }
 
 //converts fixed point to float
