@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:26:59 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 18:09:56 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/17 11:16:54 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 #include <iostream>
 #include <string>
-#include "Bureaucrat.hpp"
+#include <exception>
+#include <ostream>
+#include <cstdlib>
+class Bureaucrat;
 
 class Form
 {

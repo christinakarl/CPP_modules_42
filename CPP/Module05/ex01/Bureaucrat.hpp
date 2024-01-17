@@ -6,16 +6,19 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 17:27:04 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 17:56:27 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/17 11:16:59 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Bureaucrat_HPP
-# define Bureaucrat_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 #include <iostream>
 #include <string>
-#include "Form.hpp"
+#include <exception>
+#include <ostream>
+#include <cstdlib>
+class Form;
 
 class Bureaucrat
 {
