@@ -6,18 +6,21 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/01/16 17:30:30 by ckarl            ###   ########.fr        #
+#    Updated: 2024/01/17 15:29:38 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98 -Wno-shadow
-NAME		= forms
+NAME		= bureaucracy
 OBJS_DIR	= objs
-SRCS_DIR	= .
-SRCS		= main.cpp			\
-			Bureaucrat.cpp		\
-			Form.cpp			\
+SRCS_DIR	= src
+SRCS		= main.cpp					\
+			Bureaucrat.cpp				\
+			AForm.cpp					\
+			PresidentialPardonForm.cpp	\
+			RobotomyRequestForm.cpp		\
+			ShrubberyCreationForm.cpp	\
 
 OBJS		= $(patsubst %.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
