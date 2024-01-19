@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 20:23:18 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/19 13:14:49 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/19 15:16:16 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ AForm*	Intern::ShrubCreaForm(std::string target)
 
 const char *Intern::InternException::what(void) const throw()
 {
-	return "Intern could not create this form, it does not exist";
+	return "\033[1;31Intern could not create this form, it does not exist\033[0m";
 }
 
 AForm*	Intern::makeForm(std::string FormName, std::string FormTarget)
@@ -68,7 +68,7 @@ AForm*	Intern::makeForm(std::string FormName, std::string FormTarget)
 	{
 		if (formNames[i].compare(FormName) == 0)
 		{
-			std::cout << "Intern created " + FormName + " with target " + FormTarget << std::endl;
+			std::cout << "\033[1;36mIntern created " + FormName + " with target \033[0m" + FormTarget << std::endl;
 			return formPointers[i](FormTarget);
 		}
 	}

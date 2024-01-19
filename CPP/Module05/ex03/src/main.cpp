@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 16:11:25 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/19 13:28:48 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/19 15:21:53 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,10 @@ std::string	getInput(int i)
 }
 
 
-int	main(void)
+int	main(int argc, char **argv)
 {
+	if (argc != 1)
+		std::cout << "Please start this program without any arguments" << std::endl;
 	try {
 		Intern	bob;
 
@@ -49,18 +51,20 @@ int	main(void)
 		std::cout << "\033[1;34mOur intern will try their best to create what you asked for\033[0m" << std::endl;
 
 		std::cout << std::endl;
-		// AForm *fake1 = bob.makeForm("request", "something");
-		AForm *fake2= bob.makeForm(FormName, FormTarget);
-		std::cout << std::endl;
-		// if (fake1)
-		// 	delete fake1;
-		if (fake2)
-			delete fake2;
+		AForm *form1= bob.makeForm(FormName, FormTarget);
+		if (form1)
+		{
+			Bureaucrat	horst("horst", 12);
+			std::cout << std::endl;
+			horst.signForm(*form1);
+			horst.executeForm(*form1);
+			std::cout << std::endl;
+			delete form1;
+		}
 	}
 	catch (std::exception &e) {
 		std::cerr << "\nException caught: " << e.what() << std::endl;
 	}
-
 
 	return 0;
 }
