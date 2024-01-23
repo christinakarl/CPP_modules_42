@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:34:04 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/19 17:03:47 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/23 17:54:59 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 int	main(void)
 {
-	ScalarConverter::convertType("hellasdfasdf");
+	try {
+	std::string	str = "0";
+	ScalarConverter::convertType(str);
+	}
+	catch(std::exception &e){
+		std::cout << "Exception caught: " << e.what() << std::endl;
+	}
 
 	//need to catch input exceptions
 
