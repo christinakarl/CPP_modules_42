@@ -6,13 +6,13 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/01/19 16:51:57 by ckarl            ###   ########.fr        #
+#    Updated: 2024/01/27 15:25:46 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= c++
 CFLAGS		= -Wall -Wextra -Werror -std=c++98
-NAME		= scalartypes
+NAME		= convert
 OBJS_DIR	= objs
 SRCS_DIR	= .
 SRCS		= main.cpp			\

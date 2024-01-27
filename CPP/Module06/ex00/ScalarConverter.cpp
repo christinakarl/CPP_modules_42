@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:35:45 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/23 18:02:23 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/27 16:55:23 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,63 +39,24 @@ ScalarConverter::~ScalarConverter()
 	std::cout << "ScalarConverter destructor called" << std::endl;
 }
 
-void	displayAll(int i, float f, double d)
+//helper functions
+void	displayChar(int c)
 {
-	std::cout << "int: " << i << std::endl;
-	std::cout << "char: " << static_cast<char>(i) << std::endl;
-	std::cout << "float: " << f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
-}
-
-//convert functions
-void	convertFromChar(char c)
-{
-	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	std::cout << "char: ";
 	if (!isascii(c))
-		std::cout << "Impossible" << std::endl;
+		std::cout << "char: Impossible" << std::endl;
 	else if (c < 33 || c > 126)
-		std::cout << "Non displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
-		std::cout << c << std::endl;
-	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
-	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+		std::cout << "char: " << static_cast<char>(c) << std::endl;
 }
 
-void	convertFromInt(std::string str)
+int	getPrecision(std::string &str)
 {
-	int i = std::stoi(str);
-	std::cout << "int: " << std::stoi(str) << std::endl;
-	std::cout << "char: " << static_cast<char>(i) << std::endl;
-	std::cout << "float: " << i << ".0f" << std::endl;
-	std::cout << "double: " << i << ".0" <<std::endl;
-}
-
-void	convertFromFloat(std::string str)
-{
-	if (str.compare("-inff") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf" << std::endl;
-	else if (str.compare("+inff") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf" << std::endl;
-	else if (str.compare("nanf") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: nanf\ndouble: nan" << std::endl;
-}
-
-void	convertFromDouble(std::string str)
-{
-	if (str.compare("-inf") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf" << std::endl;
-	else if (str.compare("+inf") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf" << std::endl;
-	else if (str.compare("nan") == 0)
-		std::cout << "char: impossible\nint: impossible\nfloat: nanff\ndouble: nan" << std::endl;
-
-}
-
-//exceptions
-const char	*ScalarConverter::InvalidInput::what(void) const throw()
-{
-	return "Invalid input";
+	size_t decPoint = str.find('.');
+	if (decPoint != std::string::npos) {
+		return str.size() - decPoint - 1;
+	}
+	return 0;
 }
 
 bool	testSpecialCases(std::string str)
@@ -103,24 +64,73 @@ bool	testSpecialCases(std::string str)
 	std::string	exc[6] = {"+inf", "-inf", "nan", "+inff", "-inff", "nanf"};
 	for (int i = 0; i < 6; i++)
 	{
-		if (exc[i].compare(str) == 0 && i < 3) {
-			convertFromDouble(str);
-			return true;
-		}
-		else if (exc[i].compare(str) == 0 && i > 2) {
-			convertFromFloat(str);
+		if (exc[i].compare(str) == 0) {
+			if (i == 0 || i == 3)
+				std::cout << "char: impossible\nint: impossible\nfloat: -inff\ndouble: -inf" << std::endl;
+			else if (i == 1 || i == 4)
+				std::cout << "char: impossible\nint: impossible\nfloat: +inff\ndouble: +inf" << std::endl;
+			else if (i == 2 || i == 5)
+				std::cout << "char: impossible\nint: impossible\nfloat: nanff\ndouble: nan" << std::endl;
 			return true;
 		}
 	}
 	return false;
 }
 
+//exception
+const char	*ScalarConverter::InvalidInput::what(void) const throw()
+{
+	return "Invalid input";
+}
+
+//type specific converter functions
+void	convertFromChar(char c)
+{
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	displayChar((int)c);
+	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
+	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
+}
+
+void	convertFromInt(std::string str)
+{
+	int i = std::stoi(str);
+	std::cout << "int: " << i << std::endl;
+	displayChar(i);
+	std::cout << "float: " << i << ".0f" << std::endl;
+	std::cout << "double: " << i << ".0" <<std::endl;
+}
+
+void	convertFromFloat(std::string str)
+{
+	str.pop_back();
+	float i;
+	std::stringstream ss(str);
+	ss >> i;
+
+	std::cout << "int: " << static_cast<int>(i) << std::endl;
+	displayChar((int)i);
+	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << i << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << static_cast<double>(i) <<std::endl;
+}
+
+void	convertFromDouble(std::string str)
+{
+	std::stringstream ss(str);
+	double i;
+	ss >> i;
+
+	std::cout << "int: " << static_cast<int>(i) << std::endl;
+	displayChar((int)i);
+	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << static_cast<float>(i) << "f" << std::endl;
+	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << i <<std::endl;
+}
+
+//converter function
 void	ScalarConverter::convertType(std::string str)
 {
-	//send to parsing & throw errors if necessary
 	if (str.length() <= 0)
 		throw InvalidInput();
-
 	char	*s = const_cast <char *>(str.c_str());
 	int	onlyDigits = 0, sign = 0, point = 0, floatF = 0;
 
@@ -153,11 +163,12 @@ void	ScalarConverter::convertType(std::string str)
 		if (str.length() == 1 && !isdigit(s[0]))
 			convertFromChar(s[0]);
 		else if (point && floatF)
-			std::cout << "it's a float" << std::endl;
+			convertFromFloat(str);
 		else if (point && !floatF)
-			std::cout << "it's a double" << std::endl;
+			convertFromDouble(str);
 		else
 			convertFromInt(str);
 	}
 }
 
+//control overflows (max and min) for int, float and double before conversion (limits header)

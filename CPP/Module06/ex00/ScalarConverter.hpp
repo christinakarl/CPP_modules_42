@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:35:49 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/23 17:08:12 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/27 16:23:13 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define ScalarConverter_HPP
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <exception>
 #include <ostream>
 #include <cstdlib>
 #include <locale>
+#include <sstream>
 
 class ScalarConverter
 {
