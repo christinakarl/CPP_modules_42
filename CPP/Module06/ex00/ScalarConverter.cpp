@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:35:45 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/27 16:55:23 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/31 22:11:53 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ void	displayChar(int c)
 		std::cout << "char: " << static_cast<char>(c) << std::endl;
 }
 
+void	displayInt(double i)
+{
+	if (i > INT_MAX || i < INT_MIN)
+		std::cout << "int: Impossible" << std::endl;
+	else
+		std::cout << "int: " << static_cast<int>(i) << std::endl;
+}
+
 int	getPrecision(std::string &str)
 {
 	size_t decPoint = str.find('.');
@@ -83,6 +91,11 @@ const char	*ScalarConverter::InvalidInput::what(void) const throw()
 	return "Invalid input";
 }
 
+const char	*ScalarConverter::OutOfRange::what(void) const throw()
+{
+	return "This value is out of range for the detected type";
+}
+
 //type specific converter functions
 void	convertFromChar(char c)
 {
@@ -94,7 +107,12 @@ void	convertFromChar(char c)
 
 void	convertFromInt(std::string str)
 {
-	int i = std::stoi(str);
+	int32_t i;
+	std::stringstream ss(str);
+	ss >> i;
+
+	if (ss.fail() == true)
+		throw ScalarConverter::OutOfRange();
 	std::cout << "int: " << i << std::endl;
 	displayChar(i);
 	std::cout << "float: " << i << ".0f" << std::endl;
@@ -108,7 +126,9 @@ void	convertFromFloat(std::string str)
 	std::stringstream ss(str);
 	ss >> i;
 
-	std::cout << "int: " << static_cast<int>(i) << std::endl;
+	if (ss.fail() == true)
+		throw ScalarConverter::OutOfRange();
+	displayInt(static_cast<double>(i));
 	displayChar((int)i);
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << i << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << static_cast<double>(i) <<std::endl;
@@ -120,7 +140,9 @@ void	convertFromDouble(std::string str)
 	double i;
 	ss >> i;
 
-	std::cout << "int: " << static_cast<int>(i) << std::endl;
+	if (ss.fail() == true)
+		throw ScalarConverter::OutOfRange();
+	displayInt(i);
 	displayChar((int)i);
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << static_cast<float>(i) << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << i <<std::endl;
