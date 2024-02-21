@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:57:00 by ckarl             #+#    #+#             */
-/*   Updated: 2024/02/21 10:42:03 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/01/15 13:42:30 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ public:
 	void	takeDamage(unsigned int amount);
 	void	beRepaired(unsigned int amount);
 
-private:
+protected:
 	std::string	_name;
 	int			_hitPoints;
 	int			_energyPoints;

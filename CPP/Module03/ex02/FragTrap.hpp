@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 14:55:03 by ckarl             #+#    #+#             */
-/*   Updated: 2024/02/21 10:45:29 by ckarl            ###   ########.fr       */
+/*   Created: 2024/01/15 14:04:37 by ckarl             #+#    #+#             */
+/*   Updated: 2024/01/15 15:56:41 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef FRAGTRAP_HPP
+# define FRAGTRAP_HPP
+
+#include <iostream>
+#include <string>
 #include "ClapTrap.hpp"
 
-int	main(void)
+class FragTrap : virtual public ClapTrap
 {
-	ClapTrap	hulk("hulk");
-	ClapTrap	bambi("bambi");
+public:
+	FragTrap( void );
+	FragTrap( std::string name );
+	~FragTrap( void );
+	FragTrap( const FragTrap &f );
+	FragTrap &operator=( const FragTrap &f );
 
-	hulk.attack("bambi");
-	hulk.beRepaired(30);
-	hulk.takeDamage(10);
-	bambi.takeDamage(90);
-	bambi.attack("hulk");
-	bambi.beRepaired(2);
-	bambi.attack("hulk");
-	return 0;
-}
+	void	highFivesGuys( void );
+
+protected:
+	int	_hit;
+	int	_energy;
+	int	_damage;
+
+};
+
+#endif

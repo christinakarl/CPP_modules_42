@@ -6,7 +6,7 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/02/21 10:50:33 by ckarl            ###   ########.fr        #
+#    Updated: 2024/02/21 11:07:41 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ SRCS		= main.cpp			\
 			ClapTrap.cpp		\
 			ScavTrap.cpp		\
 			FragTrap.cpp		\
-			DiamondTrap.cpp		\
 
 OBJS		= $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
