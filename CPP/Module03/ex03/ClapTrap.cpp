@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:55:52 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/15 13:45:01 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/02/21 11:17:10 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ ClapTrap::ClapTrap( void ) : _name("default"), _hitPoints(10), _energyPoints(10)
 ClapTrap::ClapTrap( std::string name ) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0)
 {
 	std::cout << "'ClapTrap' class string constructor called" << std::endl;
+	if (this->_name.empty())
+		this->_name = "no name";
 }
 
 ClapTrap::ClapTrap( const ClapTrap &c)
