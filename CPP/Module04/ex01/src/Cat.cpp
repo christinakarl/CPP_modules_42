@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:17:50 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 12:32:28 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/02/29 15:37:00 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 Cat::Cat(void) : Animal()
 {
+	std::cout << "Cat class default constructor called" << std::endl;
 	this->_type = "Cat";
 	this->_catBrain = new Brain();
-	std::cout << "Cat class default constructor called" << std::endl;
 }
 
 Cat::Cat(std::string name) : Animal(name)
@@ -32,7 +32,6 @@ Cat::Cat(const Cat &c) : Animal(c)
 	if (this != &c)
 	{
 		this->_type = c._type;
-		delete this->_catBrain;
 		this->_catBrain = new Brain(*(c._catBrain));
 	}
 }
@@ -42,9 +41,10 @@ Cat &Cat::operator=(const Cat &c)
 	std::cout << "Cat class copy assignment operator called" << std::endl;
 	if (this != &c)
 	{
-		Animal::operator=(c);
+		// Animal::operator=(c);
 		this->_type = c._type;
-		delete this->_catBrain;
+		if (this->_catBrain)
+			delete this->_catBrain;
 		this->_catBrain = new Brain(*(c._catBrain));
 	}
 	return *this;

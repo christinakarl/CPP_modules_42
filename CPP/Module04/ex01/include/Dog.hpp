@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:12:09 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 12:36:04 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/02/29 15:20:23 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ public:
 	virtual ~Dog(void);
 
 	virtual void	makeSound(void) const;
-	void			setIdea(std::string& idea);
+	void			setIdea(std::string idea);
 	std::string		getIdea(unsigned int i);
 
 protected:

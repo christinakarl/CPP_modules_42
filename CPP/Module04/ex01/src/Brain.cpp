@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:51:53 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 12:35:59 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/02/29 14:21:28 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ Brain::~Brain()
 
 void	Brain::fillBrain(std::string& idea)
 {
-	if (this->_index < 100)
+	if (this->_index < 100 || !idea.empty())
 	{
 		this->_ideas[this->_index] = idea;
 		this->_index++;

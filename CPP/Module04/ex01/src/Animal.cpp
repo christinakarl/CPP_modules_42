@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:45:17 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/15 21:38:50 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/02/29 15:36:43 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,13 @@ Animal::Animal(std::string name) : _type(name)
 Animal::Animal(const Animal &c)
 {
 	std::cout << "Animal class copy constructor called" << std::endl;
-	if (this != &c)
-	{
-		this->_type = c._type;
-	}
+	*this = c;
 }
 
 Animal &Animal::operator=(const Animal &c)
 {
 	std::cout << "Animal class copy assignment operator called" << std::endl;
-	if (this != &c)
-	{
+	if (this != &c) {
 		this->_type = c._type;
 	}
 	return *this;
