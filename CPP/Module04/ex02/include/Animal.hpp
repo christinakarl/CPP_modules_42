@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 19:12:27 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 15:34:33 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/01 12:18:22 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 	virtual void pureVirtualFunction() const = 0;
 -Abstract class cannot be instantiated on its own
 */
-
 
 class Animal
 {

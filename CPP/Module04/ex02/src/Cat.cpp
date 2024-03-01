@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 20:17:50 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/16 12:32:28 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/01 12:06:05 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,9 @@ Cat::Cat(std::string name) : Animal(name)
 Cat::Cat(const Cat &c) : Animal(c)
 {
 	std::cout << "Cat class copy constructor called" << std::endl;
-	if (this != &c)
-	{
-		this->_type = c._type;
-		delete this->_catBrain;
-		this->_catBrain = new Brain(*(c._catBrain));
-	}
+	this->_type = c._type;
+	this->_catBrain = new Brain(*(c._catBrain));
+
 }
 
 Cat &Cat::operator=(const Cat &c)
@@ -42,9 +39,9 @@ Cat &Cat::operator=(const Cat &c)
 	std::cout << "Cat class copy assignment operator called" << std::endl;
 	if (this != &c)
 	{
-		Animal::operator=(c);
 		this->_type = c._type;
-		delete this->_catBrain;
+		if (this->_catBrain)
+			delete this->_catBrain;
 		this->_catBrain = new Brain(*(c._catBrain));
 	}
 	return *this;
