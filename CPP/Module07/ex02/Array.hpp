@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Array.hpp                                          :+:      :+:    :+:   */
+/*   _array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 19:12:29 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/12 16:00:41 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/12 16:22:26 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Array_HPP
-# define Array_HPP
+#ifndef _array_HPP
+# define _array_HPP
 
 #include <iostream>
 #include <string>
@@ -21,39 +21,35 @@ template <class T>
 class Array
 {
 public:
-	Array() { array = new T(); arraySize = 0; };
-	Array(unsigned int n) { array = new T[n]; arraySize = n; };
-	~Array()
-	{
-		if (arraySize) delete []array;
-		else delete array;
-	};
+	Array() : _array(new T()), _size(0) {};
+	Array(unsigned int n) : _array(new T[n]), _size(n) {};
+	~Array() { delete []_array; };
 	Array(const Array &c) { *this = c; };
 	Array &operator=(const Array &c) {
 		if (this != &c)
 		{
-			if (arraySize) delete []array;
-			else if (array) delete array;
-			array = new T[c.arraySize];
-			for (unsigned int i = 0; i < c.arraySize; ++i) {
-				array[i] = c.array[i];
+			if (_size) delete []_array;
+			else if (_array) delete _array;
+			_array = new T[c._size];
+			for (unsigned int i = 0; i < c._size; ++i) {
+				_array[i] = c._array[i];
 			}
-			arraySize = c.arraySize;
+			_size = c._size;
 		}
 		return *this;
 	};
 
-	T	&getElement(unsigned int n) const{
-		if (n >= arraySize)
+	T	&operator [] (unsigned int n) const{
+		if (n >= _size)
 			throw std::invalid_argument("This index is out of bound");
-		return array[n];
+		return _array[n];
 	};
 
-	unsigned int	size() const { return arraySize; };
+	unsigned int	size() const { return _size; };
 
 private:
-	T				*array;
-	unsigned int	arraySize;
+	T				*_array;
+	unsigned int	_size;
 
 };
 
