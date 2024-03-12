@@ -6,7 +6,7 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/03/11 19:13:04 by ckarl            ###   ########.fr        #
+#    Updated: 2024/03/12 15:29:28 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,7 @@ FLAGS		= -Wall -Wextra -Werror -std=c++98
 NAME		= arrayclass
 OBJS_DIR	= objs
 SRCS_DIR	= .
-SRCS		= main.cpp, Array.tpp
-
+SRCS		= main.cpp
 
 OBJS		= $(patsubst $(SRCS_DIR)/%.cpp,$(OBJS_DIR)/%.o,$(SRCS))
 
