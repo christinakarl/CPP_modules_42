@@ -1,6 +1,6 @@
-##Theory on OPP (= object oriented programming)
+Theory on OPP (= object oriented programming)
 
-#Encapsulation
+Encapsulation
 - objects (classes) can hold primary variables and functions
 - external object should not be able to change an object's attributes
 but should only interact with them them through its methods (functions)
