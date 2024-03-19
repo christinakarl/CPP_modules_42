@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 13:56:20 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/19 12:20:47 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/19 15:32:47 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,19 @@ public:
 	Span &operator=(const Span &c);
 	~Span();
 
-	void addNumber(int n);
-	void addArrayRange(int *arr, unsigned int size);
-	void addVectorRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 	int shortestSpan();
 	int longestSpan();
+	void addNumber(int n);
+	template <typename T> void addRange(T first, int size)
+	{
+		int	min = std::min(size, static_cast<int>(_max - _vec.size()));
+		_vec.insert(_vec.end(), first, first + min);
+		if (min < size)
+			throw Span::SpanIsFull();
+		for (std::vector<int>::iterator it = _vec.begin(); it != _vec.end(); it++) {
+			std::cout << *it << std::endl;
+		}
+	}
 
 	class SpanIsFull : public std::exception {
 		public:
@@ -50,9 +58,7 @@ public:
 
 private:
 	unsigned int	_max;
-	unsigned int	_total;
 	std::vector<int>	_vec;
-
 
 };
 
