@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:47:21 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/20 20:53:54 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/20 20:59:03 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,6 @@ void BitcoinExchange::getPrice(std::string inputName)
 	{
 		int pos; std::string key; float	value; std::ostringstream os;
 
-		// line.erase(std::remove_if(line.begin(), line.end(), ::isspace), line.end());
 		pos = line.find(" | ");
 		if (pos == (int)std::string::npos) {
 			_output.push_back("Error: Wrong format"); continue;
@@ -123,8 +122,7 @@ void BitcoinExchange::getPrice(std::string inputName)
 				_output.push_back("Error: " + key + " is an invalid date"); continue;
 			}
 			if (!validValue(line.substr(pos + 3))) {
-				_output.push_back("Error: " + line.substr(pos + 3) + " is an invalid number");
-				continue;
+				_output.push_back("Error: " + line.substr(pos + 3) + " is an invalid number"); continue;
 			}
 			std::istringstream ss(line.substr(pos + 3));
 			ss >> std::setprecision(2) >> std::fixed >> value;

@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:44:22 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/20 18:50:55 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/20 20:57:49 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	main(void)
 	try {
 		BitcoinExchange	ex("data.csv");
 		ex.getPrice("test.csv");
-
-
 	}
 	catch (std::exception &e) {
 		std::cout << "exception caught: " << e.what() << std::endl;
