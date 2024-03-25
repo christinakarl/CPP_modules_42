@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:35:31 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/25 11:16:49 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/25 18:11:03 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	PmergeMe::sort_all()
 	gettimeofday(&end, NULL);
 	_vec_time = (end.tv_sec - begin.tv_sec) * 1000 + (end.tv_usec - begin.tv_usec);
 	// std::chrono::duration<double> elapsed_seconds_deq = end_time - start_time;
-	// std::cout << "_deq_time: " << _vec_time << " us" << std::endl;
 	displayAll();
 }
 
@@ -148,11 +147,3 @@ void	PmergeMe::displayAll()
 
 const char	*PmergeMe::invalidInput::what(void) const throw() { return "The argument list contains invalid input"; }
 const char	*PmergeMe::emptyContainer::what(void) const throw() { return "Cannot merge sort an empty container"; }
-
-
-std::ostream	&operator << (std::ostream &os, const PmergeMe &obj)
-{
-	(void)obj;
-
-	return os;
-}

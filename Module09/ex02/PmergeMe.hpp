@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:35:27 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/25 11:03:20 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/25 18:12:28 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include <string>
 #include <algorithm>
 #include <exception>
-#include <list>
 #include <deque>
 #include <vector>
 #include <sstream>
@@ -31,13 +30,12 @@ public:
 	PmergeMe &operator = (const PmergeMe &c);
 	~PmergeMe();
 
-	void	add(const std::string &arg);
-	bool	valid_input(const std::string &arg);
-	void	sort_all();
+	void				add(const std::string &arg);
+	bool				valid_input(const std::string &arg);
+	void				displayAll();
+	void				sort_all();
 	std::deque<int>		merge_sort_deq(std::deque<int> &d);
 	std::vector<int>	merge_sort_vec(std::vector<int> & l);
-	//sort deque
-	//sort list
 	class invalidInput : public std::exception
 	{
 		public:
@@ -49,14 +47,6 @@ public:
 			virtual const char	*what(void) const throw();
 	};
 
-	void	displayAll();
-
-	// std::deque<int>		getDeq();
-	// std::vector<int>	getVec();
-	// std::vector<int>	getUnsorted();
-	// long				getDeqTime();
-	// long				getVecTime();
-
 private:
 	std::deque<int>		_deq;
 	long				_deq_time;
@@ -66,8 +56,6 @@ private:
 
 
 };
-
-std::ostream	&operator << (std::ostream &os, const PmergeMe &obj);
 
 #endif
 
