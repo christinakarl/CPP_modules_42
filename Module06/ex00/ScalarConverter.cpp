@@ -6,42 +6,40 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:35:45 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/31 22:11:53 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/27 11:34:58 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
-ScalarConverter::ScalarConverter(void)
-{
-	std::cout << "ScalarConverter class default constructor called" << std::endl;
-}
+ScalarConverter::ScalarConverter(void) {}
+ScalarConverter::ScalarConverter(const ScalarConverter &c) { (void)c; }
 
-ScalarConverter::ScalarConverter(std::string name)
+ScalarConverter &ScalarConverter::operator = (const ScalarConverter &c)
 {
-	(void) name;
-	std::cout << "ScalarConverter class string constructor called" << std::endl;
-}
-
-ScalarConverter::ScalarConverter(const ScalarConverter &c)
-{
-	std::cout << "ScalarConverter class copy constructor called" << std::endl;
-}
-
-ScalarConverter &ScalarConverter::operator=(const ScalarConverter &c)
-{
-	std::cout << "ScalarConverter class copy assignment operator called" << std::endl;
+	(void)c;
 	return *this;
 }
 
-ScalarConverter::~ScalarConverter()
-{
-	std::cout << "ScalarConverter destructor called" << std::endl;
-}
+ScalarConverter::~ScalarConverter() {}
 
 //helper functions
-void	displayChar(int c)
+void	displayChar(std::string str)
 {
+	size_t decPoint = str.find('.');
+	if (decPoint != std::string::npos) {
+		std::string subStr = str.substr(decPoint + 1);
+		std::stringstream ss(subStr);
+		char c;
+
+		while (ss >> c) {
+			if (c != '0') {
+				std::cout << "char: Impossible" << std::endl;
+				return ;
+			}
+		}
+	}
+	int c = stoi(str);
 	if (!isascii(c))
 		std::cout << "char: Impossible" << std::endl;
 	else if (c < 33 || c > 126)
@@ -86,21 +84,19 @@ bool	testSpecialCases(std::string str)
 }
 
 //exception
-const char	*ScalarConverter::InvalidInput::what(void) const throw()
-{
-	return "Invalid input";
-}
-
-const char	*ScalarConverter::OutOfRange::what(void) const throw()
-{
-	return "This value is out of range for the detected type";
-}
+const char	*ScalarConverter::InvalidInput::what(void) const throw() { return "Invalid input"; }
+const char	*ScalarConverter::OutOfRange::what(void) const throw() { return "This value is out of range for the detected type"; }
 
 //type specific converter functions
 void	convertFromChar(char c)
 {
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
-	displayChar((int)c);
+	if (!isascii(c))
+		std::cout << "char: Impossible" << std::endl;
+	else if (c < 33 || c > 126)
+		std::cout << "char: Non displayable" << std::endl;
+	else
+		std::cout << "char: " << c << std::endl;
 	std::cout << "float: " << static_cast<float>(c) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(c) << ".0" << std::endl;
 }
@@ -114,7 +110,7 @@ void	convertFromInt(std::string str)
 	if (ss.fail() == true)
 		throw ScalarConverter::OutOfRange();
 	std::cout << "int: " << i << std::endl;
-	displayChar(i);
+	displayChar(str);
 	std::cout << "float: " << i << ".0f" << std::endl;
 	std::cout << "double: " << i << ".0" <<std::endl;
 }
@@ -126,10 +122,10 @@ void	convertFromFloat(std::string str)
 	std::stringstream ss(str);
 	ss >> i;
 
-	if (ss.fail() == true)
+	if (ss.fail() == true || i < std::numeric_limits<float>::min() || i > std::numeric_limits<float>::max())
 		throw ScalarConverter::OutOfRange();
 	displayInt(static_cast<double>(i));
-	displayChar((int)i);
+	displayChar(str);
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << i << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << static_cast<double>(i) <<std::endl;
 }
@@ -140,10 +136,10 @@ void	convertFromDouble(std::string str)
 	double i;
 	ss >> i;
 
-	if (ss.fail() == true)
+	if (ss.fail() == true || i < std::numeric_limits<double>::min() || i > std::numeric_limits<double>::max())
 		throw ScalarConverter::OutOfRange();
 	displayInt(i);
-	displayChar((int)i);
+	displayChar(str);
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "float: " << static_cast<float>(i) << "f" << std::endl;
 	std::cout << std::fixed << std::setprecision(getPrecision(str)) << "double: " << i <<std::endl;
 }
@@ -154,10 +150,10 @@ void	ScalarConverter::convertType(std::string str)
 	if (str.length() <= 0)
 		throw InvalidInput();
 	char	*s = const_cast <char *>(str.c_str());
-	int	onlyDigits = 0, sign = 0, point = 0, floatF = 0;
+	int	sign = 0, point = 0, floatF = 0;
 
 	if (!testSpecialCases(str)) {
-		for (int i = 0; i < str.length(); i++)
+		for (size_t i = 0; i < str.length(); i++)
 		{
 			if (!isdigit(s[i]) && str.length() > 1) {
 				if (s[i] == '-' || s[i] == '+')
@@ -192,5 +188,3 @@ void	ScalarConverter::convertType(std::string str)
 			convertFromInt(str);
 	}
 }
-
-//control overflows (max and min) for int, float and double before conversion (limits header)

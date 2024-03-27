@@ -6,12 +6,12 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/02/03 16:06:19 by ckarl            ###   ########.fr        #
+#    Updated: 2024/03/27 11:35:13 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98
 NAME		= serialize
 OBJS_DIR	= objs
 SRCS_DIR	= .

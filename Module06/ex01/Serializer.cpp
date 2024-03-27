@@ -6,38 +6,19 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 14:35:55 by ckarl             #+#    #+#             */
-/*   Updated: 2024/02/03 15:29:41 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/27 11:36:24 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 
-Serializer::Serializer(void)
-{
-	std::cout << "Serializer class default constructor called" << std::endl;
-}
+Serializer::Serializer(void) {}
 
-Serializer::Serializer(std::string name)
-{
-	(void) name;
-	std::cout << "Serializer class string constructor called" << std::endl;
-}
+Serializer::Serializer(const Serializer &c) { (void)c; }
 
-Serializer::Serializer(const Serializer &c)
-{
-	std::cout << "Serializer class copy constructor called" << std::endl;
-}
+Serializer &Serializer::operator=(const Serializer &c) { (void)c; return *this; }
 
-Serializer &Serializer::operator=(const Serializer &c)
-{
-	std::cout << "Serializer class copy assignment operator called" << std::endl;
-	return *this;
-}
-
-Serializer::~Serializer()
-{
-	std::cout << "Serializer destructor called" << std::endl;
-}
+Serializer::~Serializer() {}
 
 //It takes a pointer and converts it to the unsigned integer type uintptr_t.
 uintptr_t Serializer::serialize(Data* ptr)

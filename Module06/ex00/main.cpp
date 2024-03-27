@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 15:34:04 by ckarl             #+#    #+#             */
-/*   Updated: 2024/01/27 15:28:13 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/03/27 11:34:43 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	main(int argc, char **argv)
 	catch(std::exception &e){
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
-
-	//need to catch input exceptions
 
 	return 0;
 }
