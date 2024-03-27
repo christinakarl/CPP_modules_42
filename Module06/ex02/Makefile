@@ -6,12 +6,12 @@
 #    By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/23 16:14:00 by ckarl             #+#    #+#              #
-#    Updated: 2024/02/05 17:48:03 by ckarl            ###   ########.fr        #
+#    Updated: 2024/03/27 11:37:00 by ckarl            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC			= c++
-CFLAGS		= -Wall -Wextra -Werror -std=c++98
+FLAGS		= -Wall -Wextra -Werror -std=c++98
 NAME		= identify
 OBJS_DIR	= objs
 SRCS_DIR	= .
