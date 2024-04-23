@@ -6,7 +6,7 @@
 /*   By: ckarl <ckarl@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:35:27 by ckarl             #+#    #+#             */
-/*   Updated: 2024/03/25 18:12:28 by ckarl            ###   ########.fr       */
+/*   Updated: 2024/04/23 17:24:42 by ckarl            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ public:
 	void				sort_all();
 	std::deque<int>		merge_sort_deq(std::deque<int> &d);
 	std::vector<int>	merge_sort_vec(std::vector<int> & l);
+
+	std::vector< std::vector<int> >	get_pairs();
+	std::vector< std::vector<int> >	recursive_sort_pairs(std::vector< std::vector<int> > &l);
+	int	get_jacobsthal_nr(int index);
+
 	class invalidInput : public std::exception
 	{
 		public:
